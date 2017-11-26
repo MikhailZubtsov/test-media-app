@@ -1,0 +1,49 @@
+<div>
+    <app-header></app-header>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <div class="panel panel-warning">
+            <div class="panel-heading">Добавление нового элемента</div>
+            <div class="panel-body">
+                <div class="list-group-item" (click)="addToImage()">Изображение</div>
+                <div class="list-group-item" (click)="addToAudio()">Аудио</div>
+                <div class="list-group-item" (click)="addToVideo()">Видео</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="panel panel-info">
+            <div class="panel-heading">Рабочая область</div>
+            <div class="panel-body" dnd-sortable-container [sortableData]="blocks">
+                <div class="row">
+                    <div class="col-md-4" style="height: 200px" *ngFor="let block of blocks; let x = index" dnd-sortable [sortableIndex]="x">
+                        <div class="list-group-item">
+                            <div class="input-group form-group">
+                                <p>{{block.type}}</p>
+                                <div class="input-group form-group">
+                                    <span *ngIf="block.type==='Изображение'" class="input-group-btn">
+                                                  <input #fileInput type="file" value="Upload" (change)="fileChange($event)" style="display: none;" accept="image/*"/>
+                                                  <button [id]="x" type="button" (click)="fileInput.click()" class="btn btn-secondary">Выбрать файл</button>
+                                                  <button [id]="x" type="button" (click)="deleteBlock()" class="btn btn-danger">Удалить блок</button>                                            
+                                                </span>
+                                    <span *ngIf="block.type==='Видео'" class="input-group-btn">
+                                                    <input #fileInput type="file" value="Upload" (change)="fileChange($event)" style="display: none;" accept="video/mp4"/>
+                                                    <button [id]="x" type="button" (click)="fileInput.click()" class="btn btn-secondary">Выбрать файл</button>
+                                                    <button [id]="x" type="button" (click)="deleteBlock()" class="btn btn-danger">Удалить блок</button>                                             
+                                                </span>
+                                    <span *ngIf="block.type==='Аудио'" class="input-group-btn">
+                                                    <input #fileInput type="file" value="Upload" (change)="fileChange($event)" style="display: none;" accept="audio/*"/>
+                                                    <button [id]="x" type="button" (click)="fileInput.click()" class="btn btn-secondary">Выбрать файл</button>
+                                                    <button [id]="x" type="button" (click)="deleteBlock()" class="btn btn-danger">Удалить блок</button>                                             
+                                                </span>
+                                </div>
+                                <p>{{block.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

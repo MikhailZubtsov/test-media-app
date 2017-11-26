@@ -1,0 +1,33 @@
+<div>
+    <app-header></app-header>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">Рабочая область</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let block of blocks; let x = index" align="center">
+                        <div class="list-group-item" style="height: 250px; border: none">
+                            <div class="input-group form-group">
+                                <span *ngIf="block.type==='Изображение'" class="input-group-btn">
+                                    <img [src]="block.url" height="200" alt="Image preview...">
+                                </span>
+                                <span *ngIf="block.type==='Аудио' && block.name !== ''" class="input-group-btn">
+                                    <audio controls>
+                                        <source [src]="block.url"> 
+                                    </audio>
+                                </span>
+                                <span *ngIf="block.type==='Видео' && block.name !== ''" class="input-group-btn">
+                                    <video height="200" controls="controls">
+                                        <source [src]="block.url" type="video/mp4">
+                                    </video>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
