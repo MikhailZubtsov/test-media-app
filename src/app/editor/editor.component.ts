@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import {DndModule} from 'ng2-dnd';
-import { UploadFileComponent } from '../upload-file/upload-file.component';
 import { Block } from '../models/target-list.model';
 import { BLOCKS } from '../list-files';
 import { FileService} from '../file.service';
